@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_restapi/service/http_service.dart';
+import 'movie_detail.dart';
 
 class MovieList extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class _MovieListState extends State<MovieList> {
   int moviesCount;
   List movies;
   HttpService service;
+  //final path = 'https://image.tmdb.org/t/p/w500';
 
   Future initialize() async {
     movies = [];
@@ -40,9 +42,24 @@ class _MovieListState extends State<MovieList> {
             color: Colors.white,
             elevation: 2.0,
             child: ListTile(
+              leading: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth: 70,
+                  minHeight: 5000,
+                  maxWidth: 120,
+                  maxHeight: 5000,
+                ),
+                child: Image.network(
+                    'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg'),
+              ),
               title: Text(movies[position].title),
               subtitle:
                   Text('Rating = ' + movies[position].voteAverage.toString()),
+              onTap: () {
+                MaterialPageRoute route = MaterialPageRoute(
+                    builder: (_) => MovieDetail(movies[position]));
+                Navigator.push(context, route);
+              },
             ),
           );
         },
