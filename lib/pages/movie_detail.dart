@@ -4,7 +4,7 @@ import 'package:tugas_restapi/models/movie.dart';
 
 class MovieDetail extends StatelessWidget {
   final Movie movie;
-  final String imgPath = 'https://image.tmdb.org/t/p/w500';
+  final String imgPath = 'https://image.tmdb.org/t/p/w500/';
 
   MovieDetail(this.movie);
 

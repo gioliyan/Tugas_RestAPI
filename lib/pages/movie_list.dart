@@ -11,7 +11,7 @@ class _MovieListState extends State<MovieList> {
   int moviesCount;
   List movies;
   HttpService service;
-  //final path = 'https://image.tmdb.org/t/p/w500';
+  final path = 'https://image.tmdb.org/t/p/w500';
 
   Future initialize() async {
     movies = [];
@@ -49,8 +49,7 @@ class _MovieListState extends State<MovieList> {
                   maxWidth: 120,
                   maxHeight: 5000,
                 ),
-                child: Image.network(
-                    'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg'),
+                child: Image.network(path + movies[position].posterPath),
               ),
               title: Text(movies[position].title),
               subtitle:
